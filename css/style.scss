@@ -1,0 +1,267 @@
+/*------------------------------------*\
+    RESET
+\*------------------------------------*/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+    v2.0b1 | 201101 
+    NOTE:WORK IN PROGRESS
+    USE WITH CAUTION AND TEST WITH ABANDON */
+
+html,body,div,span,applet,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+a,abbr,acronym,address,big,cite,code,
+del,dfn,em,img,ins,kbd,q,s,samp,
+small,strike,strong,sub,sup,tt,var,
+b,u,i,center,
+dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary,
+time,mark,audio,video{
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    font:inherit;
+    vertical-align:baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section{
+    display:block;
+}
+body{
+    line-height:1;
+}
+ol,ul{
+    list-style:none;
+}
+blockquote,q{
+    quotes:none;
+}
+blockquote:before,blockquote:after,
+q:before,q:after{
+    content:’’;
+    content:none;
+}
+/* remember to define visible focus styles! 
+:focus{
+    outline:?????;
+} */
+
+/* remember to highlight inserts somehow! */
+ins{
+    text-decoration:none;
+}
+del{
+    text-decoration:line-through;
+}
+
+table{
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/*------------------------------------*\
+    $MAIN
+\*------------------------------------*/
+/* GO! */
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+ }
+
+@mixin font($color, $size, $family) {
+    color: $color;
+    font-size: $size;
+    font-family: $family;
+}
+
+$fontLight: #999;
+$fontMed: #666;
+$fontDark: #333;
+
+
+/*Fonts*/
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url(../fonts/ProximaNova-Reg.otf);
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url(../fonts/FuturaTOT-Book.otf);
+}
+
+/*Default Styles*/
+h1, h2, h3, h4, h5 {
+    font-family: 'Futura';
+    color: $fontDark;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 3em;
+    color: $fontLight;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
+h5 {
+    font-size: .8em;
+}
+
+p {
+    font-family: 'Proxima Nova';
+    font-size: 1.2em;
+    color: $fontLight;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #999;
+}
+
+a:visited {
+    color: $fontMed;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+body {
+    background-color: #fff;
+}
+
+/*Navigation/Sidebar*/
+aside {
+    background-color: #f6f6f6;
+    height: 100%;
+    width: 22%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    .asideImg {
+        width: 50%;
+        border-radius: 50%;
+        margin: 4em 25% 2em 25%;
+    }
+    nav ul {
+        margin-top: 2em;
+        width: 100%;
+        padding: 0;
+        li {
+            list-style-type: none;
+            text-transform: uppercase;
+            text-align: center;
+            margin-top: 1em;
+            a {
+                @include font($fontDark, 1em, 'Proxima Nova');
+                font-weight: bold;
+                letter-spacing: 2px;
+                text-decoration: none;
+            }
+        }
+    }
+    h4 {
+        width: 80%;
+        text-align: center;
+        margin: 2em 10% 0 10%;
+    }
+    .icons {
+        margin: 3em;
+        text-align: center;
+        i {
+            padding: 0 .5em;
+            color: $fontDark;
+        }
+    }
+}
+
+/*Main Content*/
+.mainAlpha {
+    width: 74%;
+    padding: 0 2%;
+    margin-left: 22%;
+    article {                               /*Home Page*/
+        margin: 2em 0 2em 0;
+        width: 100%;
+        &.betaArticle {
+         height: 400px;
+        }
+        h2 {
+            border-top: 1px solid #e7e7e7;
+            border-bottom: 1px solid #e7e7e7;
+            padding: .5em 0;
+        }
+        h3 {
+            margin-top: 1em;
+            color: $fontMed;
+        }
+        p {
+            margin: 1em 0;
+        }
+        img {
+            margin: 1em 2%;
+            width: 46%;
+            height: auto;
+            float: left;
+        }
+        .hmargin {
+            margin-bottom: 1em;
+        }
+        a.alphaLink {
+            float: right;
+            margin: 1em 2em 0 0;
+            @include font($fontMed, 1.2em, "Proxima Nova");
+            text-decoration: none;
+            &:hover {
+                color: $fontLight;
+            }
+        }
+    }
+}
+
+/*Jarallax Styles*/
+ul#scene {
+    margin: 1em auto;
+    border: 2px solid #333;
+    overflow: hidden;
+}
+
+ul#scene li img {
+    margin: -5%;
+    min-width: 112%; 
+}                         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
