@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>My Blog</title>
+
+    <!--CSS Stylesheet-->
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/prism.css">
+
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+
+	<!--Fonts-->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	</head>
+<body>
+
+<!--Fixed Sidebar-->
+<aside>
+<img src="images/avatar.jpg" alt="#" class="asideImg">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="snippets.html">Snippets</a></li>
+            <li><a href="plugins.html">Plugins</a></li>
+            <li><a href="#">Graphics</a></li>
+            <li><a href="#">Archive</a></li>
+        </ul>
+    </nav>
+    <h4>Hi, I'm Konrad, a web designer who is fascinated by the web and web technologies.</h4>
+    <div class="icons">
+        <a href="http://facebook.com">
+            <i class="fa fa-facebook"></a></i>
+        <a href="http://twitter.com">
+            <i class="fa fa-twitter"></a></i>
+        <a href="http://reddit.com">
+            <i class="fa fa-reddit"></a></i>
+        <a href="http://pinterest.com">
+            <i class="fa fa-pinterest-p"></a></i>
+    </div>
+</aside>
+			
+<!--Main Content-->
+<div class="mainAlpha">
+   <!--Parallax-->
+    <article>              
+       <h2>Parallax.js</h2>
+        
+        <h3>Using Parallax to create a 3d environment</h3>
+        
+        <p>Parallax was all the rage over the web for a few years. It has been used extensively in 
+        the gaming industry before it was created for use on the web. Effectively how it works is by creating
+        multiple layers that sit on top of each other but move at different speeds creating the illusion of
+        3d perspective. In this tutorial the parallax effect will be triggered when the mose enters the image.
+        Other parallax plugins (such as jarallax.js) are triggered when the mouse wheel is scrolled down.
+        In combination with CSS3 Animations you can create a very impressive effect with scolling parallax, but
+        that is for another tutorial. Here i will demonstrate the mouse triggered effect I created using 
+        Vincent Van Gogh's A Starry Night.</p>
+        
+        <h3>Get the Script</h3>
+        
+        <p>The parallax script can be downloaded from GitHub:
+        <a href="https://github.com/wagerfield/parallax">Wagerfield/parallax</a><br /><br />
+        The Demo is here:
+        <a href="http://matthew.wagerfield.com/parallax/">Demo</a><br /><br />
+        Once downloaded place the parallax.min.js script before the closing body tag. Here you can also 
+        initialize the script with:
+        
+         <!--Pre code-->
+        <pre><code class="language-javascript">
+/*Jarallax*/
+$(document).ready(function() {
+    var scene = document.getElementById('scene');
+    var parallax = new Parallax(scene);
+});    </code></pre>
+        </p>
+        
+        <h3>Create Layers in Photoshop</h3>
+        
+        <p>Choosing A Starry Night, an impressionist painting, was no accident. As you will see the image needs
+        to be cut up into different layers; from background to foreground. It seemed to me there where four
+        distinct sections in the painting. The nightmarish spiral that is the castle was in the far foreground.
+        Just behind the castle was the village to the right. Behind that were the mountains, and in the
+        far background the sky. Once cut up and in their own layers, each image is saved as a png and saved in 
+        your images folder.</p>
+        
+        <h3>HTML Code</h3>
+        
+        <p>Place the images within the unordered list as follows, where layer1 will be the far background image 
+        and layer 4 the far foreground. The date depth class will govern the speed at which the images will move.</p>
+        
+        <!--Pre code-->
+        <pre><code class="language-markup">
+&lt;ul id="scene"&gt;<br />
+  &lt;li class="layer" data-depth="0.20"&gt;&lt;img src="layer1.png"&gt;&lt;/li&gt;<br />
+  &lt;li class="layer" data-depth="0.40"&gt;&lt;img src="layer2.png"&gt;&lt;/li&gt;<br />
+  &lt;li class="layer" data-depth="0.60"&gt;&lt;img src="layer3.png"&gt;&lt;/li&gt;<br />
+  &lt;li class="layer" data-depth="0.90"&gt;&lt;img src="layer4.png"&gt;&lt;/li&gt;<br />
+&lt;/ul&gt;
+</code></pre>
+        
+        <h3>The CSS</h3>
+        
+        <p>When placing the images gaps appear behind those images in the foreground. These exist
+        as there is nothing actually behind these images. The solution I used was to use the Clone Stamp Tool
+        in photoshop to copy elements of the sky or cliffs, or whatever looked good into those gaps. This
+        doesn't look too bad unless you were to look really close in which case you would spot those extra bits.
+        Because this is an impressionist painting this kind of technique works. Now if you look at the effect in 
+        the browser there will be gaps at the edges of the painting as the images move around. By adding a negative
+        margin, increasing the size of the image to 110%, and by setting overflow to hidden the edges will
+        disappear beyond its containing element.</p>
+        
+        <!--Pre Code-->
+        <pre><code class="language-css">
+/*Jarallax Styles*/
+ul#scene {
+    margin: 8% auto;
+    border: 2px solid #333;
+    overflow: hidden;
+}
+
+ul#scene li img {
+    margin: -5%;
+    min-width: 110%; /*Increases width beyound containing element to eliminate gaps*/
+}
+</code></pre>
+        
+        <h3>Result</h3>
+
+        <!--Jarallax Starry Night-->
+            <ul id="scene">
+                <li class="layer" data-depth="0.20"><img src="images/parallax/sky.png" alt="#" class="l1"></li>
+                <li class="layer" data-depth="0.40"><img src="images/parallax/mountains.png" alt="#" class="l1"></li>
+                <li class="layer" data-depth="0.60"><img src="images/parallax/village.png" alt="#" class="l1"></li>
+                <li class="layer" data-depth="0.90"><img src="images/parallax/castle.png" alt="#" class="l1"></li>
+            </ul>
+        <h3>Another Parallax Technique</h3>
+        <p>I came across recently another interesting use of parallax from one of my favourite paintings:
+        <a href="http://www.romancortes.com/blog/css-3d-meninas/">Valesque's Las Mininas</a> using only
+        CSS3!.</p>
+    </article>
+</div>
+<script src="js/prism.js"></script>
+<script type="text/javascript" src="js/parallax.min.js"></script>
+</body>
+</html>

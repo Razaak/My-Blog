@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>My Blog</title>
+
+    <!--CSS Stylesheet-->
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/prism.css">
+
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<!--Fonts-->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	</head>
+<body>
+
+<!--Fixed Sidebar-->
+ <aside>
+    <img src="../images/avatar.jpg" alt="#" class="asideImg">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="snippets.html">Snippets</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="#">Graphics</a></li>
+                <li><a href="#">Archive</a></li>
+            </ul>
+        </nav>
+        <h4>Hi, I'm Konrad, a web designer who is fascinated by the web and web technologies.</h4>
+        <div class="icons">
+            <a href="http://facebook.com">
+                <i class="fa fa-facebook"></a></i>
+            <a href="http://twitter.com">
+                <i class="fa fa-twitter"></a></i>
+            <a href="http://reddit.com">
+                <i class="fa fa-reddit"></a></i>
+            <a href="http://pinterest.com">
+                <i class="fa fa-pinterest-p"></a></i>
+        </div>
+ </aside>
+			
+<!--Main Content-->
+<div class="mainAlpha">
+  
+   <!--Math.Floor Article-->
+    <article>
+       
+        <h2>Math.Random</h2>
+           
+            <h3>Using JQuery and JS to generate a random colour on Click</h3>
+            
+            <p>Here is a neat little puzzle that generates three random numbers between 1 and 256 and then uses
+            these numbers to generate a random colour.</p>
+            
+        <h3>HTML Code</h3>
+           
+            <p>First we need some HTML that will be the target of these changes. A simple divider will do:
+                <pre><code class="language-markup">&lt;div class="box"&gt;&lt;/div&gt;</code></pre>
+            </p>
+            
+        <h3>CSS Code</h3>
+           
+            <p>Next we need to style the box. Here I gave it a width and height of 100px, positioned it in the
+             center of the screen, and added a the border radius property to transform it into a circle.</p> 
+             
+<!--Pre Code-->
+        <pre><code class="language-css">
+ .box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #1f1f1f;
+    border-radius: 50px;
+    margin-left: -50px;
+    margin-top: -50px;
+}   </code></pre>
+<!--End Pre Code-->
+  
+       <h3>JS Code</h3>
+      
+       <p>Here we create a click function that will trigger the code each time the divider is clicked.
+       Next we create three variables each of which will store a random number from 1 to 256. The Math.floor
+       is used to round out the number into a whole number so that no fractions will be picked. Finally a 
+       variable (randomRGBColor) containing the three nummbers concatinated with rpg() will be applied dynamically to
+       the background-color of the div using the css selector.</p>
+       
+<!--Pre Code-->
+       <pre><code class="language-javascript">
+$(".box").on("click", function() {
+    var randomOne = Math.floor(Math.random() * 256);
+    var randomTwo = Math.floor(Math.random() * 256);
+    var randomThree = Math.floor(Math.random() * 256);
+
+    var randomRGBColor = "rgb(" + randomOne + "," + randomTwo + "," + randomThree + ")";
+
+  $(".box").css("background-color",randomRGBColor);
+});   </code></pre>
+<!--End Pre Code-->
+       
+        <!--Codepen-->
+        <h3 class=hmargin>Codepen</h3>   
+
+        <p data-height="304" data-theme-id="0" data-slug-hash="gwaGE" data-default-tab="result" data-user="KonradF" class='codepen'>See the Pen <a href='http://codepen.io/KonradF/pen/gwaGE/'>gwaGE</a> by Konrad Flierenbaum (<a href='http://codepen.io/KonradF'>@KonradF</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+        <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+        
+    </article>
+</div>
+<script src="../js/prism.js"></script>
+</body>
+</html>

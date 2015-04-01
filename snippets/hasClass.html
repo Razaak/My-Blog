@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>My Blog</title>
+
+    <!--CSS Stylesheet-->
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/prism.css">
+
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<!--Fonts-->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	</head>
+<body>
+
+<!--Fixed Sidebar-->
+ <aside>
+    <img src="../images/avatar.jpg" alt="#" class="asideImg">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="snippets.html">Snippets</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="#">Graphics</a></li>
+                <li><a href="#">Archive</a></li>
+            </ul>
+        </nav>
+        <h4>Hi, I'm Konrad, a web designer who is fascinated by the web and web technologies.</h4>
+        <div class="icons">
+            <a href="http://facebook.com">
+                <i class="fa fa-facebook"></a></i>
+            <a href="http://twitter.com">
+                <i class="fa fa-twitter"></a></i>
+            <a href="http://reddit.com">
+                <i class="fa fa-reddit"></a></i>
+            <a href="http://pinterest.com">
+                <i class="fa fa-pinterest-p"></a></i>
+        </div>
+ </aside>
+			
+<!--Main Content-->
+<div class="mainAlpha">
+    <!--hasClass Use-->
+    <article>
+       
+        <h2>Add Class/Remove Class</h2>
+        
+        <h3>Using .addClass(), and .removeClass() to trigger CSS3 Animations</h3>
+        
+        <p>In this example I will demonstrate one way in which an event, such as a click event, can be used
+        to trigger animations by adding or removing a CSS class.</p>
+        
+        <h3>The HTML</h3>
+        
+        <p>We will start by creating an outside div with a class of .alpha, that will contain an image, 
+        another div with a class of .beta, and an a tag that will be used to trigger the animation.</p>
+        
+<!--Pre Code-->
+<pre><code class="language-markup">&lt;div class="alpha"&gt;<br />
+  &lt;img src="http://placehold.it/400x250" /&gt;<br />
+  &lt;div class="beta"&gt;<br />
+    &lt;a href="#" id="trigger"&gt;&lt;/a&gt;<br />
+  &lt;/div&gt;<br />
+&lt;/div&gt;<br /></code></pre>
+<!--End Pre Code-->
+  
+       <h3>CSS Code</h3>
+
+       <p>Here we add some styling and positioning to our HTML code. In .active and .open classes, we will
+       add the animations. Both will trigger when the small white box (the a tag) is clicked and will be 
+       removed when clicked on again.</p>
+   
+<!--Pre Code-->
+<pre><code class="language-css">
+body {
+    width: 960px;
+    margin: 20px auto;
+    background-color: #6e6e6e;
+ }
+ 
+.alpha {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -150px;
+}
+
+.beta {
+    background-color: #FFB2AF;
+    display: block;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    bottom: 2%;
+  }
+
+a#trigger {
+    float: right;
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: 12px;
+    background-color: white;
+}
+
+/* CSS3 Animations */
+.active {
+    height: 150px;
+    -webkit-transition: all cubic-bezier(0.86, 0, 0.07, 1) .5s;
+}
+
+.open {
+    -webkit-transform: rotate(45deg);
+    -webkit-transition: all cubic-bezier(0.86, 0, 0.07, 1) .5s;
+}  </code></pre>
+   <h3>JS Code</h3>
+   <p>Inside the click event we add an if/else statement that first checks to see if the anchor tag has a class
+   of open applied to it. Since we have not yet clicked on it, the if statement will return a false and 
+   move to the else block which will then apply the classes of .open and .active. If we click the anchor tag
+   again, this time, the if block will trigger, removing the classes. The logic of this may seem unusual
+   at first and there are of course other ways of doing it but this remains simple and logical. </p>
+          <pre><code class="language-javascript">
+$('#trigger').on('click', function(event){ 
+event.preventDefault();
+
+  if ( $('#trigger').hasClass('open') ) {
+    $('.beta').removeClass('active');
+    $(this).removeClass('open');
+  } else {
+    $('.beta').addClass('active');
+    $(this).addClass('open');
+  }
+});     </code></pre>
+<!--End Pre Code-->
+
+<!--Codepen-->
+        <h3 class=hmargin>Codepen</h3>
+        
+        <iframe height='304' scrolling='no' src='http://codepen.io/KonradF/embed/pvJQWx/' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/KonradF/pen/pvJQWx/'>pvJQWx</a> by Konrad Flierenbaum (<a href='http://codepen.io/KonradF'>@KonradF</a>) on <a href='http://codepen.io'>CodePen</a>.
+        </iframe>
+                
+    </article>
+</div>
+<script src="../js/prism.js"></script>
+</body>
+</html>
